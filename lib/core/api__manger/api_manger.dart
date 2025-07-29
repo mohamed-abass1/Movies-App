@@ -1,0 +1,94 @@
+ import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+ import 'package:http/http.dart' as http;
+import 'package:movies_app1/core/cache/sha-pref.dart';
+import 'package:movies_app1/data/model/RegisterResponseDM.dart';
+
+
+@singleton
+class ApiManger {
+Dio dio=Dio();
+Future<Response> getMoviesList(){
+  return dio.get('https://yts.mx/api/v2/list_movies.json?sort=seeds&limit=15');
+}
+Future<Response> get50MoviesList(){
+  return dio.get('https://yts.mx/api/v2/list_movies.json?limit=50');
+}
+Future<Response> getMoviesDetails(String id){
+  return dio.get('https://yts.mx/api/v2/movie_details.json?movie_id=$id');
+}
+Future<Response> getMoviesSuggest(String id){
+  return dio.get('https://yts.mx/api/v2/movie_suggestions.json?movie_id=$id');
+}
+Future<Response> getMoviesSearch(String search){
+  return dio.get('https://yts.mx/api/v2/list_movies.json?limit=50&query_term=$search');
+}
+Future<Response> register({ required Map<String, dynamic> data}) async{
+
+  print("TYPE: ${data.runtimeType}");
+  return dio.post(
+    'https://route-movie-apis.vercel.app/auth/register',
+    data: data,
+    options: Options(
+      validateStatus: (status) => true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    ),
+
+  );
+}
+static Future<http.Response> Register (String name,String password,String rePassword,String email,String phone) async {
+Uri url=Uri.https('route-movie-apis.vercel.app','auth/register');
+return await http.post(url,body: jsonEncode({
+  "name":name,
+  "email":email,
+  "password":password,
+  "confirmPassword":rePassword,
+  "phone":phone,
+  "avaterId":1
+}));
+}
+static Future<http.Response> logIn (String email,String password) async {
+  Uri url=Uri.https('route-movie-apis.vercel.app','auth/login');
+  return await http.post(url,body: {
+
+      "email":email,
+      "password":password}
+  );
+}
+
+Future<Response> addToFavourite(String imageURL,  String year,String movieId,int rating,String name) async{
+ var token= SharedPreferenceUtils.getData(key: 'token');
+  return dio.post(
+    'https://route-movie-apis.vercel.app/favorites/add',
+    data: {
+      "movieId": movieId,
+      "name": name,
+      "rating": rating,
+      "imageURL": imageURL,
+      "year": year
+    },
+    options: Options(
+      validateStatus: (status) => true,
+      headers: { 'Authorization': 'Bearer $token',},
+    ),
+
+  );
+}
+Future<Response> getFavourite() async{
+  var token= SharedPreferenceUtils.getData(key: 'token');
+  return dio.get(
+    'https://route-movie-apis.vercel.app/favorites/all',
+    options: Options(
+      validateStatus: (status) => true,
+      headers: { 'Authorization': 'Bearer $token',},
+    ),
+
+  );
+}
+
+
+}
