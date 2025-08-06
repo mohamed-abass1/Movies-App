@@ -9,7 +9,10 @@ class RegisterDownloadState extends RegisterTabStates{}
 class RegisterTabErrorState extends RegisterTabStates{
   Failures error;
   RegisterTabErrorState({required this.error});}
-
 class RegisterSuccessState extends RegisterTabStates{
   RegisterResponseEntity registerResponseEntity;
   RegisterSuccessState({required this.registerResponseEntity});}
+class ShowPassword extends RegisterTabStates{}
+class UnShowPassword extends RegisterTabStates{}
+class ShowRePassword extends RegisterTabStates{}
+class UnShowRePassword extends RegisterTabStates{}

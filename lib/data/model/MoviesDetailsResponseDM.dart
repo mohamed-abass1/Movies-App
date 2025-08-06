@@ -54,7 +54,6 @@ class MovieDetailsDM extends MoviesDetailsEntity {
     super.smallCoverImage,
     super.mediumCoverImage,
     super.largeCoverImage,
-    super.torrents,
     super.dateUploaded,
     super.dateUploadedUnix,});
 
@@ -81,12 +80,6 @@ class MovieDetailsDM extends MoviesDetailsEntity {
     smallCoverImage = json['small_cover_image'];
     mediumCoverImage = json['medium_cover_image'];
     largeCoverImage = json['large_cover_image'];
-    if (json['torrents'] != null) {
-      torrents = [];
-      json['torrents'].forEach((v) {
-        torrents?.add(TorrentsDM.fromJson(v));
-      });
-    }
     dateUploaded = json['date_uploaded'];
     dateUploadedUnix = json['date_uploaded_unix'];
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
 import '../core/providers/changeAvatarsProviders.dart';
@@ -31,11 +32,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                       });
                       avatarProvider.ChangeAvatar('assets/images/avatar1.png');
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                       imagePath: 'assets/images/avatar1.png',
                       height: height,
                       selectedImage: selectedImage,
-                      index: 1,
+                      index: 1, avatar: 1,
                     )),
                 SizedBox(
                   width: width * 0.01,
@@ -48,11 +49,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                       avatarProvider.ChangeAvatar('assets/images/avatar2.png');
 
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                       imagePath: 'assets/images/avatar2.png',
                       height: height,
                       selectedImage: selectedImage,
-                      index: 2,
+                      index: 2, avatar: 2,
                     )),
                 SizedBox(
                   width: width * 0.01,
@@ -65,11 +66,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                       avatarProvider.ChangeAvatar('assets/images/avatar3.png');
 
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar3.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 3)),
+                        index: 3, avatar: 3)),
               ],
             ),
             SizedBox(
@@ -85,11 +86,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                       avatarProvider.ChangeAvatar('assets/images/avatar4.png');
 
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar4.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 4)),
+                        index: 4, avatar: 4)),
                 SizedBox(
                   width: width * 0.01,
                 ),
@@ -101,11 +102,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
 
                       });
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar5.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 5)),
+                        index: 5, avatar: 5)),
                 SizedBox(
                   width: width * 0.01,
                 ),
@@ -117,11 +118,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
 
                       });
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar6.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 6))
+                        index: 6, avatar: 6))
               ],
             ),
             SizedBox(
@@ -137,11 +138,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
 
                       });
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar7.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 7)),
+                        index: 7, avatar: 7)),
                 SizedBox(
                   width: width * 0.01,
                 ),
@@ -153,11 +154,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
 
                       });
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar8.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 8)),
+                        index: 8, avatar: 8)),
                 SizedBox(
                   width: width * 0.01,
                 ),
@@ -169,11 +170,11 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
 
                       });
                     },
-                    child: showAvatars(
+                    child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar9.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 9)),
+                        index: 9, avatar: 9)),
               ],
             )
           ],
@@ -184,21 +185,25 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
 
   Widget showAvatars(
       {required String imagePath,
+        required num avatar,
       var height,
       required String? selectedImage,
-      required int index}) {
-    return Container(
-      padding: EdgeInsets.all(1),
-      margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.PrimaryColor, width: 1.5),
-          color: imagePath == selectedImage
-              ? AppColors.TransperntPrimaryColor
-              : AppColors.Transpernt),
-      child: Image.asset(
-        imagePath,
-        height: height * 0.12,
+      required int index,
+      required BuildContext context}) {
+    return InkWell(
+      child: Container(
+        padding: EdgeInsets.all(1),
+        margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: AppColors.PrimaryColor, width: 1.5),
+            color: imagePath == selectedImage
+                ? AppColors.TransperntPrimaryColor
+                : AppColors.Transpernt),
+        child: Image.asset(
+          imagePath,
+          height: height * 0.12,
+        ),
       ),
     );
   }

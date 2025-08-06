@@ -4,13 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app1/core/utils/font_theme.dart';
-import 'package:movies_app1/di/di.dart';
 import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabStates.dart';
 import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabViewModel.dart';
 import 'package:movies_app1/features/screens/MovieDetails/MovieDetails.dart';
 import 'package:movies_app1/reusable_widget/moviesListViewer.dart';
 import 'package:movies_app1/screen_details/listView.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/utils/app_colors.dart';
 
 class HomeTab extends StatefulWidget {
@@ -46,9 +45,7 @@ class _HomeTabState extends State<HomeTab> {
                             opacity: 0.4,
                             child: CachedNetworkImage(
                               fit: BoxFit.fill,
-                              imageUrl: HomeTabViewModel
-                                  .get(context)
-                                  .chosenWallpaper!,
+                              imageUrl: HomeTabViewModel.get(context).chosenWallpaper!,
                               placeholder: (context, url) =>
                                   Center(
                                     child: CircularProgressIndicator(
@@ -105,7 +102,7 @@ class _HomeTabState extends State<HomeTab> {
                           return Builder(
                             builder: (BuildContext context) {
                               return InkWell(onTap: () { Navigator.pushNamed(context, MovieDetails.routeName,arguments: Movie);
-                                HomeTabViewModel.get(context).hiveList?.add(Movie);
+                                HomeTabViewModel.get(context).saveHiveList(Movie);
                                 },
                                   child: MoviesListview(item:Movie));
             
@@ -120,15 +117,15 @@ class _HomeTabState extends State<HomeTab> {
                   ],
                 ),
                 SizedBox(height: height*0.01,),
-                Movieslistviewer(moviesList: HomeTabViewModel.get(context).romanceList!, movieType: 'Romance'),
+                Movieslistviewer(moviesList: HomeTabViewModel.get(context).romanceList!, movieType: AppLocalizations.of(context)!.romance),
                 SizedBox(height: height*0.01,),
-                Movieslistviewer(moviesList: HomeTabViewModel.get(context).actionList!, movieType: 'Action'),
+                Movieslistviewer(moviesList: HomeTabViewModel.get(context).actionList!, movieType: AppLocalizations.of(context)!.action),
                 SizedBox(height: height*0.01,),
-                Movieslistviewer(moviesList: HomeTabViewModel.get(context).scienceFictionList!, movieType: 'Science Fiction'),
+                Movieslistviewer(moviesList: HomeTabViewModel.get(context).scienceFictionList!, movieType: AppLocalizations.of(context)!.sciFic),
                 SizedBox(height: height*0.01,),
-                Movieslistviewer(moviesList: HomeTabViewModel.get(context).dramaList!, movieType: 'Drama'),
+                Movieslistviewer(moviesList: HomeTabViewModel.get(context).dramaList!, movieType: AppLocalizations.of(context)!.drama),
                 SizedBox(height: height*0.01,),
-                Movieslistviewer(moviesList: HomeTabViewModel.get(context).comedyList!, movieType: 'Comedy'),
+                Movieslistviewer(moviesList: HomeTabViewModel.get(context).comedyList!, movieType: AppLocalizations.of(context)!.comedy),
                 SizedBox(height: height*0.01,),
               ],
             ),

@@ -4,12 +4,9 @@ import 'package:injectable/injectable.dart';
 import 'package:movies_app1/core/api__manger/api_manger.dart';
 import 'package:movies_app1/core/errors/Errors_File.dart';
 import 'package:movies_app1/data/model/MoviesListResponseDM.dart';
-import 'package:movies_app1/domain/entities/MoviesListEntity.dart';
 
 
-import '../../domain/repository/data_source/getMoviesDetailsDataSource.dart';
 import '../../domain/repository/data_source/getMoviesSuggestDataSource.dart';
-import '../model/MoviesDetailsResponseDM.dart';
 @Injectable(as:GetMoviesSuggestDataSource )
 class GetMoviesSuggestDataSourceImpl implements GetMoviesSuggestDataSource{
 ApiManger apiManger;

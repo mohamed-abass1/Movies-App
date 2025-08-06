@@ -16,6 +16,7 @@ GetMoviesDataSourceImpl({required this.apiManger});
      var response = await apiManger.getMoviesList();
      var moviesList=MoviesListResponseDm.fromJson(response.data);
      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+       print('movie list${moviesList.data.runtimeType}');
        return Right(moviesList);
      } else {
        return Left(ServerError(errorMessage: moviesList.message!));

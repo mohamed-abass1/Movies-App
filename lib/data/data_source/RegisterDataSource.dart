@@ -1,8 +1,6 @@
-import 'dart:convert';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app1/core/errors/Errors_File.dart';
 import 'package:movies_app1/data/model/RegisterResponseDM.dart';
@@ -16,7 +14,7 @@ class RegisterDataSourceImpl implements RegisterDataSource{
   RegisterDataSourceImpl({required this.apiManger});
   @override
   Future<Either<Failures, RegisterResponseEntity>> register({required String name,
-      required String email, required String password, required String rePassword, required String phone}) async {
+      required String email, required String password, required String rePassword, required String phone,required num avatar}) async {
 
       final List<ConnectivityResult> connectivityResult =
       await Connectivity().checkConnectivity();
@@ -28,7 +26,7 @@ class RegisterDataSourceImpl implements RegisterDataSource{
           "password":password,
           "confirmPassword":rePassword,
           "phone":phone,
-          "avaterId":1
+          "avaterId":avatar
         });
         print("TYPE = ${response.data.runtimeType}");
         print("DATA = ${response.data}");

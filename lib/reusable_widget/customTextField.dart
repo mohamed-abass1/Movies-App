@@ -5,6 +5,7 @@ import '../core/utils/font_theme.dart';
 
 class CustomTextField extends StatefulWidget {
   Color? borderColor;
+  bool? obscure;
   TextEditingController? controller;
   String? hintText;
   Color? cursorColor;
@@ -17,7 +18,7 @@ class CustomTextField extends StatefulWidget {
   String? Function(String?)? validator;
   int? maxLines;
   Color? fillColor;
-  CustomTextField({this.onTap,
+  CustomTextField({this.obscure,this.onTap,
     this.cursorColor,this.fillColor,
       this.controller,this.validator,this.maxLines,
     this.prefixIcon,this.hintStyle,this.suffixIcon,
@@ -36,7 +37,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       TextFormField
 
         (onEditingComplete:widget.onTap ,
-
+         obscureText:widget.obscure??false ,
           validator:widget.validator  ,
           controller: widget.controller,
           maxLines: widget.maxLines??1,

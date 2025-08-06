@@ -1,11 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/animation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app1/domain/entities/MoviesListEntity.dart';
-import 'package:movies_app1/domain/use_case/GetMoviesUseCase.dart';
-import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabStates.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../domain/use_case/Get50MoviesUseCase.dart';
 import 'BrowseTabStates.dart';
 @injectable

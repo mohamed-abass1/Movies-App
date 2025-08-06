@@ -10,8 +10,8 @@ class RegisterRepositoryImpl implements RegisterRepository{
   RegisterDataSource registerDataSource;
   RegisterRepositoryImpl ({required this.registerDataSource});
 
-  Future<Either<Failures, RegisterResponseEntity>> register({required String email,required String password,required String rePassword,required String name,required String phone}) async {
-    var either =await registerDataSource.register(email: email, password: password, rePassword: rePassword, name:name, phone: phone);
+  Future<Either<Failures, RegisterResponseEntity>> register({required num avatar,required String email,required String password,required String rePassword,required String name,required String phone}) async {
+    var either =await registerDataSource.register(email: email, password: password, rePassword: rePassword, name:name, phone: phone,avatar: avatar);
     return either.fold((error) => Left(error), (response) => Right(response));
   }
 }

@@ -1,17 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movies_app1/domain/entities/MoviesDetailsResponseEntity.dart';
 import 'package:movies_app1/domain/entities/MoviesListEntity.dart';
-import 'package:movies_app1/domain/use_case/GetMoviesDetailsUseCase.dart';
-import 'package:movies_app1/domain/use_case/GetMoviesSuggestUseCase.dart';
-import 'package:movies_app1/domain/use_case/GetMoviesUseCase.dart';
-import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabStates.dart';
-import 'package:movies_app1/features/screens/MovieDetails/MovieDetailsStates.dart';
-
-import '../../../../domain/use_case/Get50MoviesUseCase.dart';
 import '../../../../domain/use_case/GetMoviesSearchUseCase.dart';
 import 'MovieSearchStates.dart';
 @injectable
@@ -20,10 +11,11 @@ GetMoviesSearchUseCase moviesSearchUseCase;
  List<MoviesEntity> moviesSearch=[];
 TextEditingController Search=TextEditingController();
 MovieSearchViewModel({required this.moviesSearchUseCase}) : super(MovieSearchInitialState());
+static MovieSearchViewModel get(context) => BlocProvider.of<MovieSearchViewModel>(context);
 
-  Future<void> getMovieSearch() async {
+  Future<void> getMovieSearch(search) async {
     emit(MovieSearchDownloadState());
-    var either=await moviesSearchUseCase.invoke(Search.text);
+    var either=await moviesSearchUseCase.invoke(search);
     either.fold((l) =>emit(MovieSearchErrorState( error: l)) ,
           (response) {moviesSearch=response.data!.movies??[];
       print(moviesSearch.length);
@@ -32,5 +24,4 @@ MovieSearchViewModel({required this.moviesSearchUseCase}) : super(MovieSearchIni
           MovieSearchSuccessState(moviesListResponseEntity: response));
     },);
   }
-
 }

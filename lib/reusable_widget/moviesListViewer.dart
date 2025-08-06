@@ -4,6 +4,9 @@ import 'package:movies_app1/core/utils/app_colors.dart';
 import 'package:movies_app1/core/utils/font_theme.dart';
 import 'package:movies_app1/domain/entities/MoviesListEntity.dart';
 import 'package:movies_app1/screen_details/moviesListViewerScreenDetails.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../features/home_screen/tabs/search_tab/search_tab.dart';
 
 class Movieslistviewer extends StatelessWidget {
 List<MoviesEntity>moviesList;
@@ -20,7 +23,12 @@ Movieslistviewer({required this.moviesList,required this.movieType});
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween
           ,children: [Text(movieType,style: FontTheme.regular14White,),Row(
             children: [
-              Text('See More',style: FontTheme.regular16Primary,),
+              InkWell(onTap: () {
+                Navigator.pushNamed(context, SearchTab.route,arguments: movieType);
+                print(movieType);
+
+                },
+                  child: Text(AppLocalizations.of(context)!.seeMore,style: FontTheme.regular16Primary,)),
               SizedBox(width: width*0.005,),
               Icon(Icons.arrow_forward_rounded,color: AppColors.PrimaryColor,size: height*0.015,)
             ],

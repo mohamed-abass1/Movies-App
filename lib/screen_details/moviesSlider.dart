@@ -8,7 +8,7 @@ import '../core/utils/app_colors.dart';
 import '../features/screens/MovieDetails/MovieDetails.dart';
 
 class MoviesSlider extends StatelessWidget {
-  MoviesEntity item;
+  MoviesEntity? item;
   MoviesSlider({required this.item});
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class MoviesSlider extends StatelessWidget {
           children: [ClipRRect(borderRadius: BorderRadius.all(Radius.circular(16)),
             child:CachedNetworkImage(
               fit: BoxFit.fill,
-              imageUrl: item.mediumCoverImage??'',
+              imageUrl: item?.mediumCoverImage??'',
               placeholder: (context, url) =>
                   Center(
                     child: CircularProgressIndicator(
@@ -43,7 +43,7 @@ class MoviesSlider extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(16))),
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(item.rating.toString()??'',style: FontTheme.regular16White,),
+                  Text(item?.rating.toString()??'',style: FontTheme.regular16White,),
                   Image.asset('assets/images/star 1.png'),
                 ],
               ),

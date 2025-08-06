@@ -1,5 +1,5 @@
 import 'package:movies_app1/domain/entities/GetAllFavouriteResponseEntity.dart';
-import 'package:movies_app1/features/home_screen/tabs/profile_tab/profile_Tab.dart';
+import 'package:movies_app1/domain/entities/RegisterResponseEntity.dart';
 
 import '../../../../core/errors/Errors_File.dart';
 
@@ -13,3 +13,9 @@ class ProfileTabErrorState extends ProfileTabStates{
 class ProfileTabSuccessState extends ProfileTabStates{
   GetAllFavouriteResponseEntity moviesListResponseEntity;
   ProfileTabSuccessState({required this.moviesListResponseEntity});}
+class GetProfileSuccessState extends ProfileTabStates{
+  RegisterResponseEntity moviesListResponseEntity;
+  GetProfileSuccessState({required this.moviesListResponseEntity});}
+class GetProfileErrorState extends ProfileTabStates{
+  Failures error;
+  GetProfileErrorState({required this.error});}

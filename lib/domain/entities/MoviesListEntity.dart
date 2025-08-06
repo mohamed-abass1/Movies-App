@@ -5,12 +5,12 @@ class MoviesListResponseEntity extends HiveObject {
   MoviesListResponseEntity({
       this.status, 
       this.statusMessage,
-    @HiveField(0)
-      this.data, 
+      this.data,
      });
 
   String? status;
   String? statusMessage;
+  @HiveField(0)
   MoviesDataEntity? data;
 
 
@@ -19,17 +19,18 @@ class MoviesListResponseEntity extends HiveObject {
 
 @HiveType(typeId: 2)
 
-class MoviesDataEntity {
+class MoviesDataEntity extends HiveObject{
   MoviesDataEntity({
       this.movieCount, 
       this.limit, 
       this.pageNumber,
-    @HiveField(0)
       this.movies,});
 
   num? movieCount;
   num? limit;
   num? pageNumber;
+  @HiveField(1)
+
   List<MoviesEntity>? movies;
 
 
@@ -37,144 +38,133 @@ class MoviesDataEntity {
 @HiveType(typeId: 3)
 class MoviesEntity {
   MoviesEntity({
-    @HiveField(0)
       this.id,
-    @HiveField(1)
     this.url,
-    @HiveField(2)
     this.imdbCode,
-    @HiveField(3)
 
     this.title,
-    @HiveField(4)
 
     this.titleEnglish,
-    @HiveField(5)
 
     this.titleLong,
-    @HiveField(6)
 
     this.slug,
-    @HiveField(7)
 
     this.year,
-    @HiveField(8)
 
     this.rating,
-    @HiveField(9)
 
     this.runtime,
-    @HiveField(10)
 
     this.genres,
-    @HiveField(11)
 
     this.summary,
-    @HiveField(12)
 
     this.descriptionFull,
-    @HiveField(13)
 
     this.synopsis,
-    @HiveField(14)
 
     this.ytTrailerCode,
-    @HiveField(15)
 
     this.language,
-    @HiveField(16)
 
     this.mpaRating,
-    @HiveField(17)
 
 
     this.backgroundImage,
-    @HiveField(18)
 
     this.backgroundImageOriginal,
-    @HiveField(19)
 
     this.smallCoverImage,
-    @HiveField(20)
 
     this.mediumCoverImage,
-    @HiveField(21)
 
     this.largeCoverImage,
-    @HiveField(22)
 
     this.state,
-    @HiveField(23)
 
-    this.torrents,
-    @HiveField(24)
 
     this.dateUploaded,
-  @HiveField(25)
 
   this.dateUploadedUnix,});
+  @HiveField(2)
 
   num? id;
+  @HiveField(3)
+
   String? url;
+  @HiveField(4)
+
   String? imdbCode;
+  @HiveField(5)
+
   String? title;
+  @HiveField(6)
+
   String? titleEnglish;
+  @HiveField(7)
+
   String? titleLong;
+  @HiveField(8)
+
   String? slug;
+  @HiveField(9)
+
   num? year;
+  @HiveField(10)
+
   num? rating;
+  @HiveField(11)
+
   num? runtime;
+  @HiveField(12)
+
   List<String>? genres;
+  @HiveField(13)
+
   String? summary;
+  @HiveField(14)
+
   String? descriptionFull;
+  @HiveField(15)
+
   String? synopsis;
+  @HiveField(16)
+
   String? ytTrailerCode;
+  @HiveField(17)
+
   String? language;
+  @HiveField(18)
+
   String? mpaRating;
+  @HiveField(19)
+
   String? backgroundImage;
+  @HiveField(20)
+
   String? backgroundImageOriginal;
+  @HiveField(21)
+
   String? smallCoverImage;
+  @HiveField(22)
+
   String? mediumCoverImage;
+  @HiveField(23)
+
+
   String? largeCoverImage;
+  @HiveField(24)
+
   String? state;
-  List<TorrentsEntity>? torrents;
+
+  @HiveField(26)
+
   String? dateUploaded;
+  @HiveField(27)
+
   num? dateUploadedUnix;
 
 
 }
 
-class TorrentsEntity {
-  TorrentsEntity({
-      this.url, 
-      this.hash, 
-      this.quality, 
-      this.type, 
-      this.isRepack, 
-      this.videoCodec, 
-      this.bitDepth, 
-      this.audioChannels, 
-      this.seeds, 
-      this.peers, 
-      this.size, 
-      this.sizeBytes, 
-      this.dateUploaded, 
-      this.dateUploadedUnix,});
-
-  String? url;
-  String? hash;
-  String? quality;
-  String? type;
-  String? isRepack;
-  String? videoCodec;
-  String? bitDepth;
-  String? audioChannels;
-  num? seeds;
-  num? peers;
-  String? size;
-  num? sizeBytes;
-  String? dateUploaded;
-  num? dateUploadedUnix;
-
-
-}

@@ -2,13 +2,8 @@ import 'dart:convert';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app1/core/errors/Errors_File.dart';
-import 'package:movies_app1/data/model/RegisterResponseDM.dart';
-import 'package:movies_app1/domain/entities/RegisterResponseEntity.dart';
-import 'package:movies_app1/domain/repository/data_source/RegisterDataSource.dart';
-
 import '../../core/api__manger/api_manger.dart';
 import '../../domain/entities/LogInResponseEntity.dart';
 import '../../domain/repository/data_source/LogInDataSource.dart';

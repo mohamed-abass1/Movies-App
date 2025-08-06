@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 import 'package:movies_app1/core/api__manger/api_manger.dart';
 import 'package:movies_app1/core/errors/Errors_File.dart';
 import 'package:movies_app1/data/model/MoviesListResponseDM.dart';
-import 'package:movies_app1/domain/repository/data_source/getMoviesDataSource.dart';
 
 import '../../domain/repository/data_source/getMoviesSearchDataSource.dart';
 @Injectable(as:GetMoviesSearchDataSource )

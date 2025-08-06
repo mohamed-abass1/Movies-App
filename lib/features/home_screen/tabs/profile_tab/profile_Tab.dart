@@ -6,12 +6,12 @@ import 'package:movies_app1/core/utils/app_colors.dart';
 import 'package:movies_app1/core/utils/font_theme.dart';
 import 'package:movies_app1/di/di.dart';
 import 'package:movies_app1/features/auth/login%20screen/login_screen.dart';
-import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabStates.dart';
-import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabViewModel.dart';
 import 'package:movies_app1/features/home_screen/tabs/profile_tab/ProfileTabViewModel.dart';
 import 'package:movies_app1/features/home_screen/tabs/profile_tab/profileTabStates.dart';
+import 'package:movies_app1/features/screens/update_profile/update_profile.dart';
 import 'package:movies_app1/reusable_widget/customElevatedButton.dart';
 import 'package:movies_app1/screen_details/WhishListSlider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../screen_details/moviesSlider.dart';
 
@@ -29,7 +29,7 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return BlocBuilder<ProfileTabViewModel,ProfileTabStates>(
-      bloc: viewModel..getFavouriteMoviesList(),
+      bloc: viewModel..getFavouriteMoviesList()..getHiveList()..getProfile(),
       builder: (context, state) {
         if (state is ProfileTabDownloadState){
           return Center(child: CircularProgressIndicator(color: AppColors.PrimaryColor,));}
@@ -43,7 +43,7 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
               Container(
                 padding: EdgeInsets.only(
                     top: height * 0.06, left: width * 0.03, right: width * 0.03),
-                height: height * 0.45,
+                height: height * 0.455,
                 color: AppColors.PrimaryDark,
                 child: Column(
                   children: [
@@ -52,16 +52,19 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                       children: [
                         Column(
                           children: [
+                            viewModel.avatar==null?
+                                Center(child: CircularProgressIndicator(color: AppColors.PrimaryColor,)):
                             Image.asset(
-                              'assets/images/avatar1.png',
+                              'assets/images/avatar${viewModel.avatar}.png',
                               height: height * 0.14,
                               fit: BoxFit.fill,
                             ),
                             SizedBox(
                               height: height * 0.02,
                             ),
+
                             Text(
-                              'name',
+                              viewModel.name??'name',
                               style: FontTheme.bold20White,
                             )
                           ],
@@ -79,7 +82,7 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                               height: height * 0.02,
                             ),
                             Text(
-                              'wish List',
+                              AppLocalizations.of(context)!.wishList,
                               style: FontTheme.bold24White,
                             )
                           ],
@@ -90,14 +93,14 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                               height: height * 0.03,
                             ),
                             Text(
-                              '${HomeTabViewModel.get(context).hiveList?.length}',
+                              '${viewModel.historyList.length}',
                               style: FontTheme.bold36White,
                             ),
                             SizedBox(
                               height: height * 0.02,
                             ),
                             Text(
-                              'History',
+                              AppLocalizations.of(context)!.history,
                               style: FontTheme.bold24White,
                             )
                           ],
@@ -114,7 +117,8 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                           width: width * 0.6,
                           child:CustomElevatedButton(backgroundColor: AppColors.PrimaryColor,
                               textStyle: FontTheme.regular20Black,
-                              text: 'Edit Profile')
+                              text: AppLocalizations.of(context)!.editProfile,
+                          onTab: () => Navigator.pushNamed(context, UpdateProfile.routeName),)
                         ),
                         SizedBox(
                           width: width * 0.3,
@@ -124,7 +128,7 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                               Navigator.pushNamed(context, LoginScreen.initialRoute);},
                               textStyle: FontTheme.semi16white,
                               backgroundColor: AppColors.RedColor,
-                              text: 'Exit'),
+                              text: AppLocalizations.of(context)!.exit),
                         )
                       ],
                     ),
@@ -155,7 +159,7 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                                   color: AppColors.PrimaryColor,
                                 ),
                                 Text(
-                                  'Wish List',
+                                  AppLocalizations.of(context)!.wishList,
                                   style: FontTheme.regular20White,
                                 )
                               ],
@@ -184,7 +188,7 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                                   color: AppColors.PrimaryColor,
                                 ),
                                 Text(
-                                  'History',
+                                  AppLocalizations.of(context)!.history,
                                   style: FontTheme.regular20White,
                                 )
                               ],
@@ -202,11 +206,11 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                     childAspectRatio: 2 / 3,
                     crossAxisSpacing: width * 0.01,
                     crossAxisCount: 3,),
-                  itemCount: wishOrHist == 'History' ? HomeTabViewModel.get(context).hiveList!.length:viewModel.moviesFavouriteList!.length,
+                  itemCount: wishOrHist == 'History' ? viewModel.historyList.length:viewModel.moviesFavouriteList!.length,
                   itemBuilder: (BuildContext context, int index) {
                     return
                       wishOrHist=='History'? MoviesSlider(
-                        item: HomeTabViewModel.get(context).hiveList![index]
+                        item:viewModel.historyList[index]
                     ):WhichListSlider(item: viewModel.moviesFavouriteList![index]);
                   },
                 ),

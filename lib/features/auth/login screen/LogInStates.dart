@@ -14,3 +14,9 @@ class LogInTabErrorState extends LogInTabStates{
 class LogInSuccessState extends LogInTabStates{
   LogInResponseEntity logInResponseEntity;
   LogInSuccessState({required this.logInResponseEntity});}
+class changeLanguageSuccessState extends LogInTabStates{
+}
+class ShowPasswordLogIn extends LogInTabStates{}
+class UnShowPasswordLogIn extends LogInTabStates{}
+
+

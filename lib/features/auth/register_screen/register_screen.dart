@@ -6,6 +6,7 @@ import 'package:movies_app1/core/utils/app_colors.dart';
 import 'package:movies_app1/core/utils/font_theme.dart';
 import 'package:movies_app1/core/validator.dart';
 import 'package:movies_app1/di/di.dart';
+import 'package:movies_app1/features/auth/login%20screen/login_screen.dart';
 import 'package:movies_app1/features/auth/register_screen/RegisterStates.dart';
 import 'package:movies_app1/features/auth/register_screen/RegisterViewModel.dart';
 import 'package:movies_app1/reusable_widget/customElevatedButton.dart';
@@ -20,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var height=MediaQuery.of(context).size.height;
     var width=MediaQuery.of(context).size.width;
-    return BlocListener<RegisterViewModel,RegisterTabStates>(
+    return BlocConsumer<RegisterViewModel,RegisterTabStates>(
       bloc: viewModel,
       listener: (BuildContext context, RegisterTabStates state)
       {  if (state is RegisterDownloadState) {
@@ -41,7 +42,7 @@ class RegisterScreen extends StatelessWidget {
           title: 'Success',
           posActionName: 'OK');
     }},
-      child: Scaffold(
+      builder:(context, state) =>  Scaffold(
         appBar: AppBar(centerTitle: true,
           title: Text(
 
@@ -63,9 +64,11 @@ class RegisterScreen extends StatelessWidget {
                   enlargeFactor: 0.6,
                   enableInfiniteScroll: true,
                   enlargeCenterPage: true,
+                  onPageChanged: (index, reason) => viewModel.avatar=index,
                   initialPage: 1,
                   height: 300.0),
                       items: viewModel.avatars.map((i) {
+
                       return Builder(
                       builder: (BuildContext context) {
                       return Container(
@@ -94,17 +97,36 @@ class RegisterScreen extends StatelessWidget {
                   validator: AppValidators.validateEmail,
                   prefixIcon:ImageIcon(AssetImage('assets/images/email_icon.png'),color: AppColors.WhiteColor),hintText:'Email',),
                 SizedBox(height: height*0.02,),
+
                 CustomTextField(fillColor: AppColors.PrimaryDark,
                   controller:viewModel.password1Controller ,
                   validator: AppValidators.validatePassword,
-                  prefixIcon:ImageIcon(AssetImage('assets/images/lock_icon.png'),color: AppColors.WhiteColor),hintText:'Password',suffixIcon: ImageIcon(AssetImage('assets/images/show_pass_icon.png'),color: AppColors.WhiteColor),),
-                SizedBox(height: height*0.02,),
+                  obscure: viewModel.passwordObscureText,
+                  prefixIcon:ImageIcon(AssetImage('assets/images/lock_icon.png'),color: AppColors.WhiteColor),hintText:'Password',
+                  suffixIcon:viewModel.passwordObscureText==true? InkWell(
+                    onTap:() {viewModel.unObscurePassword();},
+                    child: ImageIcon(color: AppColors.WhiteColor,
+                        AssetImage('assets/images/show_pass_icon.png') ),
+                  ):
+                  InkWell(onTap: () => viewModel.ObscurePassword(),
+                      child: Icon(Icons.remove_red_eye_rounded,color: AppColors.WhiteColor,))
+                ),
+                  SizedBox(height: height*0.02,),
 
                 CustomTextField(fillColor: AppColors.PrimaryDark,
+                  obscure: viewModel.RepasswordObscureText,
                   controller:viewModel.rePassword1Controller ,
                   validator: AppValidators.validatePassword,
-                  prefixIcon:ImageIcon(AssetImage('assets/images/lock_icon.png'),color: AppColors.WhiteColor),hintText:'Confirm Password',suffixIcon: ImageIcon(AssetImage('assets/images/show_pass_icon.png'),color: AppColors.WhiteColor),),
-                SizedBox(height: height*0.02,),
+                  prefixIcon:ImageIcon(AssetImage('assets/images/lock_icon.png'),color: AppColors.WhiteColor),hintText:'Confirm Password',
+                  suffixIcon: viewModel.RepasswordObscureText==true? InkWell(
+                    onTap:() {viewModel.unObscureRePassword();},
+                    child: ImageIcon(color: AppColors.WhiteColor,
+                        AssetImage('assets/images/show_pass_icon.png') ),
+                  ):
+                  InkWell(onTap: () => viewModel.ObscureRePassword(),
+                      child: Icon(Icons.remove_red_eye_rounded,color: AppColors.WhiteColor,))),
+
+                  SizedBox(height: height*0.02,),
 
                 CustomTextField(fillColor: AppColors.PrimaryDark,
                   controller:viewModel.phoneNumController ,
@@ -115,11 +137,14 @@ class RegisterScreen extends StatelessWidget {
                   onTab: () => viewModel..register(),
                     textStyle: FontTheme.regular20Black, backgroundColor: AppColors.PrimaryColor, text: 'Create Account'),
                 SizedBox(height: height*0.02,),
-                RichText(textAlign: TextAlign.center,
-                  text: TextSpan(children:<TextSpan>[
-                    TextSpan(text: 'Already Have Account? ',style: FontTheme.regular16White),
-                    TextSpan(text: 'LogIn',style: FontTheme.regular16Primary),
-                  ] ),),
+                InkWell(onTap: () => Navigator.pushNamed(context, LoginScreen.initialRoute),
+                  child: RichText(textAlign: TextAlign.center,
+
+                    text: TextSpan(children:<TextSpan>[
+                      TextSpan(text: 'Already Have Account? ',style: FontTheme.regular16White),
+                      TextSpan(text: 'LogIn',style: FontTheme.regular16Primary,),
+                    ] ),),
+                ),
               ],
             ),
           ),

@@ -89,6 +89,77 @@ Future<Response> getFavourite() async{
 
   );
 }
+Future<Response> getProfile() async{
+  var token= SharedPreferenceUtils.getData(key: 'token');
+  print(token);
+  return dio.get(
+    'https://route-movie-apis.vercel.app/profile',
+    options: Options(
+      validateStatus: (status) => true,
+      headers: { 'Authorization': 'Bearer $token',},
+    ),
+
+  );
+}
+
+Future<Response> updateProfile(num? avatar) async{
+  var token= SharedPreferenceUtils.getData(key: 'token');
+  return dio.patch(
+    data: {
+      "email":"mohamedabass1223s26@gmail.com",
+      "avaterId":avatar
+    },
+    'https://route-movie-apis.vercel.app/profile',
+    options: Options(
+      validateStatus: (status) => true,
+      headers: { 'Authorization': 'Bearer $token',},
+    ),
+
+  );
+}
+Future<Response> resetPassword({ required String oldPassword,required String newPassword}) async{
+  var token= SharedPreferenceUtils.getData(key: 'token');
+  return dio.patch(
+    'https://route-movie-apis.vercel.app/auth/reset-password',
+    data: {
+      "oldPassword":oldPassword,
+      "newPassword":newPassword
+    },
+    options: Options(
+      validateStatus: (status) => true,
+      headers: {
+        'Authorization': 'Bearer $token',
+        "Content-Type": "application/json",
+      },
+    ),
+
+  );
+}
+Future<Response> IsFavourite(String movieId) async{
+  var token= SharedPreferenceUtils.getData(key: 'token');
+  return dio.get(
+    'https://route-movie-apis.vercel.app/favorites/is-favorite/${movieId}',
+    options: Options(
+      validateStatus: (status) => true,
+      headers: { 'Authorization': 'Bearer $token',},
+    ),
+
+  );
+}
+Future<Response> RemoveFavourite(String movieId) async{
+  var token= SharedPreferenceUtils.getData(key: 'token');
+  return dio.delete(
+    'https://route-movie-apis.vercel.app/favorites/remove/${movieId}',
+    options: Options(
+      validateStatus: (status) => true,
+      headers: { 'Authorization': 'Bearer $token',},
+    ),
+
+  );
+}
+
+
+
 
 
 }

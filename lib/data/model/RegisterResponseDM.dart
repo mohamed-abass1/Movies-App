@@ -30,6 +30,7 @@ class RegisterDataDM extends RegisterDataEntity{
     name = json['name'].toString();
     phone = json['phone'].toString();
     id = json['_id'].toString();
+    avaterId=json['avaterId'];
     createdAt = json['createdAt'].toString();
     updatedAt = json['updatedAt'].toString();
 

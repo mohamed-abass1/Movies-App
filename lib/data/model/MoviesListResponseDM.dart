@@ -1,5 +1,5 @@
+import 'package:hive/hive.dart';
 import 'package:movies_app1/domain/entities/MoviesListEntity.dart';
-
 class MoviesListResponseDm extends MoviesListResponseEntity{
   MoviesListResponseDm({
       super.status,
@@ -37,37 +37,84 @@ class MoviesDataDM extends MoviesDataEntity {
     }
   }
 
+
+
 }
 
 class MoviesDM extends MoviesEntity{
   MoviesDM({
       super.id,
-      super.url,
-      super.imdbCode,
-      super.title,
-      super.titleEnglish,
-      super.titleLong,
-      super.slug,
-      super.year,
-      super.rating,
-      super.runtime,
-      super.genres,
-      super.summary,
-      super.descriptionFull,
-      super.synopsis,
-      super.ytTrailerCode,
-      super.language,
-      super.mpaRating,
-      super.backgroundImage,
-      super.backgroundImageOriginal,
-      super.smallCoverImage,
-      super.mediumCoverImage,
-      super.largeCoverImage,
-      super.state,
-      super.torrents,
-      super.dateUploaded,
-      super.dateUploadedUnix,});
+    super.url,
+    super.imdbCode,
 
+    super.title,
+
+    super.titleEnglish,
+
+    super.titleLong,
+
+    super.slug,
+
+    super.year,
+
+    super.rating,
+
+    super.runtime,
+
+    super.genres,
+
+    super.summary,
+
+    super.descriptionFull,
+
+    super.synopsis,
+
+    super.ytTrailerCode,
+
+    super.language,
+
+    super.mpaRating,
+
+    super.backgroundImage,
+
+    super.backgroundImageOriginal,
+    super.smallCoverImage,
+    super.mediumCoverImage,
+    super.largeCoverImage,
+    super.state,
+    super.dateUploaded,
+
+    super.dateUploadedUnix,});
+
+  MoviesEntity toEntity() {
+    return MoviesEntity(
+      id: id,
+      url: url,
+      imdbCode: imdbCode,
+      title: title,
+      titleEnglish: titleEnglish,
+      titleLong: titleLong,
+      slug: slug,
+      year: year,
+      rating: rating,
+      runtime: runtime,
+      genres: genres,
+      summary: summary,
+      descriptionFull: descriptionFull,
+      synopsis: synopsis,
+      ytTrailerCode: ytTrailerCode,
+      language: language,
+      mpaRating: mpaRating,
+      backgroundImage: backgroundImage,
+      backgroundImageOriginal: backgroundImageOriginal,
+      smallCoverImage: smallCoverImage,
+      mediumCoverImage: mediumCoverImage,
+      largeCoverImage: largeCoverImage,
+      state: state,
+      dateUploaded: dateUploaded,
+      dateUploadedUnix: dateUploadedUnix,
+    );
+  }
   MoviesDM.fromJson(dynamic json) {
     id = json['id'];
     url = json['url'];
@@ -92,52 +139,41 @@ class MoviesDM extends MoviesEntity{
     mediumCoverImage = json['medium_cover_image'];
     largeCoverImage = json['large_cover_image'];
     state = json['state'];
-    if (json['torrents'] != null) {
-      torrents = [];
-      json['torrents'].forEach((v) {
-        torrents?.add(TorrentsDM.fromJson(v));
-      });
-    }
     dateUploaded = json['date_uploaded'];
     dateUploadedUnix = json['date_uploaded_unix'];
   }
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['url'] = url;
+    map['imdb_code'] = imdbCode;
+    map['title'] = title;
+    map['title_english'] = titleEnglish;
+    map['title_long'] = titleLong;
+    map['slug'] = slug;
+    map['year'] = year;
+    map['rating'] = rating;
+    map['runtime'] = runtime;
+    map['genres'] = genres;
+    map['summary'] = summary;
+    map['description_full'] = descriptionFull;
+    map['synopsis'] = synopsis;
+    map['yt_trailer_code'] = ytTrailerCode;
+    map['language'] = language;
+    map['mpa_rating'] = mpaRating;
+    map['background_image'] = backgroundImage;
+    map['background_image_original'] = backgroundImageOriginal;
+    map['small_cover_image'] = smallCoverImage;
+    map['medium_cover_image'] = mediumCoverImage;
+    map['large_cover_image'] = largeCoverImage;
+    map['state'] = state;
+    map['date_uploaded'] = dateUploaded;
+    map['date_uploaded_unix'] = dateUploadedUnix;
+    return map;
+  }
+
 
 
 
 }
 
-class TorrentsDM extends TorrentsEntity{
-  TorrentsDM({
-      super.url,
-      super.hash,
-      super.quality,
-      super.type,
-      super.isRepack,
-      super.videoCodec,
-      super.bitDepth,
-      super.audioChannels,
-      super.seeds,
-      super.peers,
-      super.size,
-      super.sizeBytes,
-      super.dateUploaded,
-      super.dateUploadedUnix,});
-
-  TorrentsDM.fromJson(dynamic json) {
-    url = json['url'];
-    hash = json['hash'];
-    quality = json['quality'];
-    type = json['type'];
-    isRepack = json['is_repack'];
-    videoCodec = json['video_codec'];
-    bitDepth = json['bit_depth'];
-    audioChannels = json['audio_channels'];
-    seeds = json['seeds'];
-    peers = json['peers'];
-    size = json['size'];
-    sizeBytes = json['size_bytes'];
-    dateUploaded = json['date_uploaded'];
-    dateUploadedUnix = json['date_uploaded_unix'];
-  }
-
-}

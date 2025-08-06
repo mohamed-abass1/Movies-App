@@ -43,9 +43,9 @@ class _MovieDetailsState extends State<MovieDetails> {
     print(args.id);
     return BlocConsumer<MovieDetailsViewModel,MovieDetailsStates>(
 
-      bloc: viewModel..getMovieDetails('${args.id}')..getMovieSuggest('${args.id}'),
+      bloc: viewModel..getMovieDetails('${args.id}')..getMovieSuggest('${args.id}')..isFavourite('${args.id}'),
       builder: (context, state) {
-        if (state is MovieDetailsSuccessState||state is MovieSuggestSuccessState){return Scaffold(
+        if (state is MovieDetailsSuccessState||state is MovieSuggestSuccessState||state is IsFavouriteSuccessState||state is RemoveFavouriteSuccessState){return Scaffold(
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -78,9 +78,13 @@ class _MovieDetailsState extends State<MovieDetails> {
                               children: [
                                 InkWell(onTap:() => Navigator.pushNamed(context, HomeScreen.routeName) ,
                                     child: Icon(Icons.arrow_back_ios_new, color: AppColors.WhiteColor,size: height*0.04,)),
+                                viewModel.favouriteMessage==false ?
                                 InkWell(onTap: () => viewModel.addMovieToFavourite(args.largeCoverImage??'','${ args.year??''}', '${args.id??''}',args.rating?.toInt()??1, args.title??''),
-                                  child: ImageIcon(const AssetImage('assets/images/save_flag.png'),
-                                      color: AppColors.WhiteColor),
+                                 child:  ImageIcon( AssetImage('assets/images/save_flag.png'), color: AppColors.WhiteColor)
+                                ):
+                                //todo:remove favourite
+                                InkWell(onTap: () => viewModel.removeFavourite('${args.id}'),
+                                    child:  ImageIcon( AssetImage('assets/images/save_flag.png'), color: AppColors.PrimaryColor)
                                 )
                               ],
                             ),
@@ -89,7 +93,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                               child: SizedBox(height: height*0.117,
                                 child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(textAlign: TextAlign.center,args.slug!,style: FontTheme.bold24White,),
+                                    Text(textAlign: TextAlign.center,args.slug??'',style: FontTheme.bold24White,),
                                     Text(viewModel.movieDetails.year.toString(),style: FontTheme.bold20Gray,textAlign: TextAlign.center,)
                                   ],
                                 ),
@@ -283,7 +287,15 @@ class _MovieDetailsState extends State<MovieDetails> {
           message: 'Added Successfully',
           title: 'Success',
           posActionName: 'OK');
-    } },
+    } if (state is RemoveFavouriteSuccessState) {
+     DialogUtils.hideLoading(context);
+     DialogUtils.showMessage(
+         context: context,
+         message: 'Removed Successfully',
+         title: 'Success',
+         posActionName: 'OK');
+   }},
+
     );
   }
 }

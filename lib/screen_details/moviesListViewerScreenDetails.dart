@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../core/utils/app_colors.dart';
 import '../domain/entities/MoviesListEntity.dart';
+import '../features/home_screen/tabs/home_tab/homeTabViewModel.dart';
 import '../features/screens/MovieDetails/MovieDetails.dart';
 
 class MovieslistviewerScreenDetails extends StatelessWidget {
@@ -13,7 +14,8 @@ MovieslistviewerScreenDetails({required this.item});
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return  InkWell(onTap: () => Navigator.pushNamed(context, MovieDetails.routeName,arguments: item),
+    return  InkWell(onTap: (){ Navigator.pushNamed(context, MovieDetails.routeName,arguments: item);
+    HomeTabViewModel.get(context).saveHiveList(item);},
       child: Container(margin: EdgeInsets.symmetric(horizontal: width*0.02,vertical: height*0.01),
         child: Stack(
           children: [ClipRRect(borderRadius: BorderRadius.all(Radius.circular(16)),

@@ -48,8 +48,7 @@ class MoviesDetailsEntity {
       this.smallCoverImage, 
       this.mediumCoverImage, 
       this.largeCoverImage, 
-      this.torrents, 
-      this.dateUploaded, 
+      this.dateUploaded,
       this.dateUploadedUnix,});
 
   num? id;
@@ -74,7 +73,6 @@ class MoviesDetailsEntity {
   String? smallCoverImage;
   String? mediumCoverImage;
   String? largeCoverImage;
-  List<TorrentsEntity>? torrents;
   String? dateUploaded;
   num? dateUploadedUnix;
 
