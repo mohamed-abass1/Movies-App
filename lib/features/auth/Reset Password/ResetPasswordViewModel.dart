@@ -14,8 +14,8 @@ import 'ResetPasswordStates.dart';
 class ResetPasswordViewModel extends Cubit<ResetPasswordTabStates>{
   bool NewPasswordObscureText = true;
   bool OldPasswordObscureText = true;
-  TextEditingController oldPasswordController = TextEditingController(text: '@mohamedABASS1');
-  TextEditingController NewPassword1Controller = TextEditingController(text: '@mohamedABASS1');
+  TextEditingController oldPasswordController = TextEditingController();
+  TextEditingController NewPassword1Controller = TextEditingController();
   var formKey = GlobalKey<FormState>();
   ResetPasswordUseCase logInUseCase;
   ResetPasswordViewModel({required this.logInUseCase}) : super(ResetPasswordInitialState());

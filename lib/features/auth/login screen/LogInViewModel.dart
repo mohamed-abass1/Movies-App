@@ -13,8 +13,8 @@ import 'LogInStates.dart';
 @injectable
 class LogInViewModel extends Cubit<LogInTabStates>{
 bool passwordObscureText=true;
-  TextEditingController EmailController = TextEditingController(text: 'mohamedabass1223s26@gmail.com');
-  TextEditingController password1Controller = TextEditingController(text: '@mohamedABASS1');
+  TextEditingController EmailController = TextEditingController();
+  TextEditingController password1Controller = TextEditingController();
   var formKey = GlobalKey<FormState>();
   String oldLanguage='en';
   LogInUseCase logInUseCase;
