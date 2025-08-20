@@ -35,7 +35,7 @@ The app allows users to explore movies, view detailed information, cast, ratings
 
 | Home | Explore | Search | Movie Details |
 |------|---------|--------|---------------|
-| ![Home](assets/ScreenShots/Movies%20App%20Home%20Tab.png) | ![Explore](assets/ScreenShots/Movies%20App%20Explore%20Tab.png) | ![Search](assets/ScreenShots/Movies%20App%20Search%20Tab.png) | ![Details](assets/ScreenShots/Movies%20App%20More%20Movie%20Details.png) |
+| ![Home](assets/ScreenShots/Movies App Home Tab.png) | ![Explore](assets/ScreenShots/Movies%20App%20Explore%20Tab.png) | ![Search](assets/ScreenShots/Movies%20App%20Search%20Tab.png) | ![Details](assets/ScreenShots/Movies%20App%20More%20Movie%20Details.png) |
 
 | Profile | Edit Profile | Register | More |
 |---------|--------------|----------|------|
