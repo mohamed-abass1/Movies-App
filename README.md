@@ -31,7 +31,6 @@ The app allows users to explore movies, view detailed information, cast, ratings
 - **Connectivity**: Connectivity Plus
 - **Onboarding**: Introduction Screen
 
----## Screenshots
 ## Screenshots
 
 ### Main Tabs
