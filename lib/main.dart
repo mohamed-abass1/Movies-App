@@ -12,7 +12,6 @@ import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabViewModel.
 import 'package:movies_app1/features/home_screen/tabs/profile_tab/ProfileTabViewModel.dart';
 import 'package:movies_app1/features/home_screen/tabs/search_tab/MovieSearchViewModel.dart';
 import 'package:movies_app1/features/screens/MovieDetails/MovieDetailsViewModel.dart';
-import 'package:movies_app1/features/screens/update_profile/UpdateViewModel.dart';
 import 'package:movies_app1/screen_details/On_Boarding.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +25,7 @@ import 'features/auth/login screen/login_screen.dart';
 import 'features/auth/register_screen/register_screen.dart';
 import 'features/home_screen/tabs/search_tab/search_tab.dart';
 import 'features/screens/MovieDetails/MovieDetails.dart';
+import 'features/screens/update_profile/UpdateViewModel.dart';
 import 'features/screens/update_profile/update_profile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main()async {

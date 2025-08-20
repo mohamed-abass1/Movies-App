@@ -1,16 +1,44 @@
-# movies_app1
+# Movies App
 
-A new Flutter project.
+A Flutter application that provides users with a seamless movie browsing experience.  
+The app allows users to explore movies, view detailed information, cast, ratings, screenshots, and manage their own profile.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Features
+- Search movies by title
+- Explore tab for trending and popular movies
+- Detailed movie information: description, rating, cast, and screenshots
+- Wishlist to save favorite movies
+- History to track recently viewed movies (stored locally using Hive)
+- User profile management: edit profile and choose an avatar
+- Password reset functionality
+- Carousel slider for featured movies
+- Connectivity check for online/offline states
+- Persistent local storage for user preferences and watch history
+- Cached images for performance optimization
+- Onboarding screens for first-time users
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Technologies & Packages
+- **State Management**: Bloc, Flutter Bloc, Provider
+- **Dependency Injection**: Injectable, GetIt
+- **Networking**: Dio, HTTP
+- **Functional Programming**: Dartz
+- **Local Storage**: Hive, Hive Flutter, Shared Preferences, Path Provider
+- **UI & Styling**: Google Fonts, Carousel Slider, Cached Network Image
+- **Connectivity**: Connectivity Plus
+- **Onboarding**: Introduction Screen
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Screenshots
+
+| Home | Explore | Search | Movie Details |
+|------|---------|--------|---------------|
+| ![Home](screenshots/Movies%20App%20Home%20Tab.png) | ![Explore](screenshots/Movies%20App%20Explore%20Tab.png) | ![Search](screenshots/Movies%20App%20Search%20Tab.png) | ![Details](screenshots/Movies%20App%20More%20Movie%20Details.png) |
+
+| Profile | Edit Profile | Register | More |
+|---------|--------------|----------|------|
+| ![Profile](screenshots/Movies%20App%20Profile%20Tab.png) | ![Edit Profile](screenshots/Movies%20App%20Edit%20Profile%20Tab.png) | ![Register](screenshots/Movies%20App%20Register.png) | ![More](screenshots/Movies%20App%20More%20Home%20Tab.png) |
