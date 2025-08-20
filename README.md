@@ -31,14 +31,12 @@ The app allows users to explore movies, view detailed information, cast, ratings
 - **Connectivity**: Connectivity Plus
 - **Onboarding**: Introduction Screen
 
----
-
-## Screenshots
+---## Screenshots
 
 | Home | Explore | Search | Movie Details |
 |------|---------|--------|---------------|
-| ![Home](screenshots/Movies%20App%20Home%20Tab.png) | ![Explore](screenshots/Movies%20App%20Explore%20Tab.png) | ![Search](screenshots/Movies%20App%20Search%20Tab.png) | ![Details](screenshots/Movies%20App%20More%20Movie%20Details.png) |
+| ![Home](assets/ScreenShots/Movies%20App%20Home%20Tab.png) | ![Explore](assets/ScreenShots/Movies%20App%20Explore%20Tab.png) | ![Search](assets/ScreenShots/Movies%20App%20Search%20Tab.png) | ![Details](assets/ScreenShots/Movies%20App%20More%20Movie%20Details.png) |
 
 | Profile | Edit Profile | Register | More |
 |---------|--------------|----------|------|
-| ![Profile](screenshots/Movies%20App%20Profile%20Tab.png) | ![Edit Profile](screenshots/Movies%20App%20Edit%20Profile%20Tab.png) | ![Register](screenshots/Movies%20App%20Register.png) | ![More](screenshots/Movies%20App%20More%20Home%20Tab.png) |
+| ![Profile](assets/ScreenShots/Movies%20App%20Profile%20Tab.png) | ![Edit Profile](assets/ScreenShots/Movies%20App%20Edit%20Profile%20Tab.png) | ![Register](assets/ScreenShots/Movies%20App%20Register.png) | ![More](assets/ScreenShots/Movies%20App%20More%20Home%20Tab.png) |
