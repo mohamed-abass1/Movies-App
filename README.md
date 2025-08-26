@@ -22,14 +22,25 @@ The app allows users to explore movies, view detailed information, cast, ratings
 ---
 
 ## Technologies & Packages
-- **State Management**: Bloc, Flutter Bloc, Provider
-- **Dependency Injection**: Injectable, GetIt
-- **Networking**: Dio, HTTP
-- **Functional Programming**: Dartz
-- **Local Storage**: Hive, Hive Flutter, Shared Preferences, Path Provider
-- **UI & Styling**: Google Fonts, Carousel Slider, Cached Network Image
-- **Connectivity**: Connectivity Plus
-- **Onboarding**: Introduction Screen
+- **State Management**: Bloc, Flutter Bloc, Provider  
+- **Dependency Injection**: Injectable, GetIt  
+- **Networking**: Dio, HTTP  
+- **Functional Programming**: Dartz  
+- **Local Storage**: Hive, Hive Flutter, Shared Preferences, Path Provider  
+- **UI & Styling**: Google Fonts, Carousel Slider, Cached Network Image  
+- **Connectivity**: Connectivity Plus  
+- **Onboarding**: Introduction Screen  
+
+---
+
+## Architecture
+The project follows **Clean Architecture with MVVM pattern**, ensuring scalability, testability, and maintainability:
+
+- **Presentation Layer** → Flutter UI with Bloc/Provider  
+- **Domain Layer** → Entities and Use Cases (business logic)  
+- **Data Layer** → Repository pattern with Remote (Dio/HTTP) and Local (Hive/SharedPreferences) sources  
+
+---
 
 ## Screenshots
 
@@ -37,7 +48,8 @@ The app allows users to explore movies, view detailed information, cast, ratings
 | Home | Search | Explore | Profile |
 |------|--------|---------|---------|
 | ![Home](assets/ScreenShots/Movies%20App%20Home%20Tab.png) | ![Search](assets/ScreenShots/Movies%20App%20Search%20Tab.png) | ![Explore](assets/ScreenShots/Movies%20App%20Explore%20Tab.png) | ![Profile](assets/ScreenShots/Movies%20App%20Profile%20Tab.png) |
+
 ### Other Screens
-| Movie Details | More Movie Details | Edit Profile | Register |
-|---------------|--------------------|--------------|----------|
-| ![Details](assets/ScreenShots/Movies%20App%20Movie%20Details.png) | ![More Details](assets/ScreenShots/Movies%20App%20More%20Movie%20Details.png) | ![Edit Profile](assets/ScreenShots/Movies%20App%20Edit%20Profile%20Tab.png) | ![Register](assets/ScreenShots/Movies%20App%20Register.png) | 
+| Movie Details | Extra Details | Edit Profile | Register |
+|---------------|---------------|--------------|----------|
+| ![Details](assets/ScreenShots/Movies%20App%20Movie%20Details.png) | ![Extra Details](assets/ScreenShots/Movies%20App%20More%20Movie%20Details.png) | ![Edit Profile](assets/ScreenShots/Movies%20App%20Edit%20Profile%20Tab.png) | ![Register](assets/ScreenShots/Movies%20App%20Register.png) | 
