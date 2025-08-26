@@ -94,7 +94,7 @@ import '../domain/use_case/LogInUseCase.dart' as _i786;
 import '../domain/use_case/RegisterUseCase.dart' as _i734;
 import '../domain/use_case/RemoveFavouriteMoviesUseCase.dart' as _i378;
 import '../domain/use_case/ResetPasswordUseCase.dart' as _i631;
-import '../domain/use_case/UpdateProfileUseCase.dart' as _i582;
+import '../domain/use_case/UpdateUseCase.dart' as _i718;
 import '../features/auth/login%20screen/LogInViewModel.dart' as _i380;
 import '../features/auth/register_screen/RegisterViewModel.dart' as _i1000;
 import '../features/auth/Reset%20Password/ResetPasswordViewModel.dart' as _i970;
@@ -198,7 +198,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i570.ResetPasswordRepository>(() =>
         _i214.ResetPasswordRepositoryImpl(
             logInDataSource: gh<_i33.ResetPasswordDataSource>()));
-    gh.factory<_i242.UpdateProfileUseCase>(() => _i242.UpdateProfileUseCase(
+    gh.factory<_i718.UpdateProfileUseCase>(() => _i718.UpdateProfileUseCase(
         updateProfileRepository: gh<_i788.UpdateProfileRepository>()));
     gh.factory<_i280.RegisterRepository>(() => _i209.RegisterRepositoryImpl(
         registerDataSource: gh<_i353.RegisterDataSource>()));
@@ -207,7 +207,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i949.GetMoviesSuggestUseCase>(() =>
         _i949.GetMoviesSuggestUseCase(
             getMoviesRepository: gh<_i1001.GetMoviesSuggestRepository>()));
-    gh.factory<_i582.GetProfileUseCase>(() => _i582.GetProfileUseCase(
+    gh.factory<_i242.GetProfileUseCase>(() => _i242.GetProfileUseCase(
         getProfileRepository: gh<_i1000.GetProfileRepository>()));
     gh.factory<_i1072.IsFavouriteMoviesUseCase>(() =>
         _i1072.IsFavouriteMoviesUseCase(
@@ -215,6 +215,8 @@ extension GetItInjectableX on _i174.GetIt {
                 gh<_i99.IsFavouriteMoviesRepository>()));
     gh.factory<_i231.GetMoviesUseCase>(() => _i231.GetMoviesUseCase(
         getMoviesRepository: gh<_i990.GetMoviesRepository>()));
+    gh.factory<_i192.UpdateViewModel>(() => _i192.UpdateViewModel(
+        updateProfileUseCase: gh<_i718.UpdateProfileUseCase>()));
     gh.factory<_i978.MovieSearchViewModel>(() => _i978.MovieSearchViewModel(
         moviesSearchUseCase: gh<_i387.GetMoviesSearchUseCase>()));
     gh.factory<_i1057.AddToFavouriteUseCase>(() => _i1057.AddToFavouriteUseCase(
@@ -233,12 +235,6 @@ extension GetItInjectableX on _i174.GetIt {
           getMoviesUseCase: gh<_i231.GetMoviesUseCase>(),
           get50MoviesUseCase: gh<_i225.Get50MoviesUseCase>(),
         ));
-    gh.factory<_i192.UpdateViewModel>(() => _i192.UpdateViewModel(
-        updateProfileUseCase: gh<_i242.UpdateProfileUseCase>()));
-    gh.factory<_i812.ProfileTabViewModel>(() => _i812.ProfileTabViewModel(
-          getProfileUseCase: gh<_i582.GetProfileUseCase>(),
-          get50MoviesUseCase: gh<_i323.GetFavouriteMoviesUseCase>(),
-        ));
     gh.factory<_i185.MovieDetailsViewModel>(() => _i185.MovieDetailsViewModel(
           removeFavouriteMoviesUseCase:
               gh<_i378.RemoveFavouriteMoviesUseCase>(),
@@ -249,6 +245,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i970.ResetPasswordViewModel>(() => _i970.ResetPasswordViewModel(
         logInUseCase: gh<_i631.ResetPasswordUseCase>()));
+    gh.factory<_i812.ProfileTabViewModel>(() => _i812.ProfileTabViewModel(
+          getProfileUseCase: gh<_i242.GetProfileUseCase>(),
+          get50MoviesUseCase: gh<_i323.GetFavouriteMoviesUseCase>(),
+        ));
     gh.factory<_i1000.RegisterViewModel>(() =>
         _i1000.RegisterViewModel(registerUseCase: gh<_i734.RegisterUseCase>()));
     return this;

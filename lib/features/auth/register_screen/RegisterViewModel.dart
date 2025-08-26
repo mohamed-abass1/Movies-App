@@ -16,8 +16,9 @@ class RegisterViewModel extends Cubit<RegisterTabStates> {
   bool passwordObscureText = true;
   bool RepasswordObscureText = true;
 
-  num avatar = 1;
+  num avatar =0;
   List<String> avatars = [
+    'assets/images/avatar0.png',
     'assets/images/avatar1.png',
     'assets/images/avatar2.png',
     'assets/images/avatar3.png',
@@ -25,8 +26,7 @@ class RegisterViewModel extends Cubit<RegisterTabStates> {
     'assets/images/avatar5.png',
     'assets/images/avatar6.png',
     'assets/images/avatar7.png',
-    'assets/images/avatar8.png',
-    'assets/images/avatar9.png'
+    'assets/images/avatar8.png'
   ];
   var formKey = GlobalKey<FormState>();
   String? selectedAvatar;
@@ -38,13 +38,15 @@ class RegisterViewModel extends Cubit<RegisterTabStates> {
   Future<void> register() async {
     if (formKey.currentState?.validate() == true) {
       emit(RegisterDownloadState());
+      print('chosen avatar$avatar');
       var either = await registerUseCase.invoke(
           email: EmailController.text,
           password: password1Controller.text,
           rePassword: rePassword1Controller.text,
           name: NameController.text,
           phone: phoneNumController.text,
-          avatar: avatar);
+          avatar: avatar!);
+      print('chosen avatar$avatar');
 
       either.fold(
         (l) => emit(RegisterTabErrorState(error: l)),

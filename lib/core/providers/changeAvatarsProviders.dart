@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 
 class ChangeAvatarProviders extends ChangeNotifier{
-  String oldAvatar='assets/images/avatar1.png';
+  String oldAvatar='assets/images/avatar0.png';
   num avatar=1;
   void ChangeAvatar(String newAvatar){
     if (oldAvatar==newAvatar){return;}

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -110,6 +112,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
               ),
               SizedBox(height: height * 0.04),
               CustomTextField(
+                controller: viewModel.email,
                 cursorColor: AppColors.WhiteColor,
                 prefixIcon: ImageIcon(
                     color: AppColors.WhiteColor,

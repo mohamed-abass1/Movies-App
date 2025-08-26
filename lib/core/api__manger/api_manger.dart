@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
  import 'package:http/http.dart' as http;
 import 'package:movies_app1/core/cache/sha-pref.dart';
-import 'package:movies_app1/data/model/RegisterResponseDM.dart';
 
 
 @singleton
@@ -40,7 +39,7 @@ Future<Response> register({ required Map<String, dynamic> data}) async{
 
   );
 }
-static Future<http.Response> Register (String name,String password,String rePassword,String email,String phone) async {
+static Future<http.Response> Register (String name,String password,String rePassword,String email,String phone,avatar) async {
 Uri url=Uri.https('route-movie-apis.vercel.app','auth/register');
 return await http.post(url,body: jsonEncode({
   "name":name,
@@ -48,7 +47,7 @@ return await http.post(url,body: jsonEncode({
   "password":password,
   "confirmPassword":rePassword,
   "phone":phone,
-  "avaterId":1
+  "avaterId":avatar
 }));
 }
 static Future<http.Response> logIn (String email,String password) async {
@@ -102,11 +101,11 @@ Future<Response> getProfile() async{
   );
 }
 
-Future<Response> updateProfile(num? avatar) async{
+Future<Response> updateProfile(String email,num? avatar) async{
   var token= SharedPreferenceUtils.getData(key: 'token');
   return dio.patch(
     data: {
-      "email":"mohamedabass1223s26@gmail.com",
+      "email":email,
       "avaterId":avatar
     },
     'https://route-movie-apis.vercel.app/profile',

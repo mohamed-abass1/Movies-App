@@ -10,7 +10,7 @@ class AvatarsBottomSheet extends StatefulWidget {
   State<AvatarsBottomSheet> createState() => _AvatarsBottomSheetState();
 }
 class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
-  String selectedImage = 'assets/images/avatar1.png';
+  String selectedImage = 'assets/images/avatar0.png';
   Widget build(BuildContext context) {
     var avatarProvider = Provider.of<ChangeAvatarProviders>(context);
     var height = MediaQuery.of(context).size.height;
@@ -28,15 +28,32 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                 InkWell(
                     onTap: () {
                       setState(() {
+                        selectedImage = 'assets/images/avatar0.png';
+                      });
+                      avatarProvider.ChangeAvatar('assets/images/avatar0.png');
+                    },
+                    child: showAvatars(context: context,
+                      imagePath: 'assets/images/avatar0.png',
+                      height: height,
+                      selectedImage: selectedImage,
+                      index: 1, avatar: 1,
+                    )),
+                SizedBox(
+                  width: width * 0.01,
+                ),
+                InkWell(
+                    onTap: () {
+                      setState(() {
                         selectedImage = 'assets/images/avatar1.png';
                       });
                       avatarProvider.ChangeAvatar('assets/images/avatar1.png');
+
                     },
                     child: showAvatars(context: context,
                       imagePath: 'assets/images/avatar1.png',
                       height: height,
                       selectedImage: selectedImage,
-                      index: 1, avatar: 1,
+                      index: 2, avatar: 2,
                     )),
                 SizedBox(
                   width: width * 0.01,
@@ -50,24 +67,7 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
 
                     },
                     child: showAvatars(context: context,
-                      imagePath: 'assets/images/avatar2.png',
-                      height: height,
-                      selectedImage: selectedImage,
-                      index: 2, avatar: 2,
-                    )),
-                SizedBox(
-                  width: width * 0.01,
-                ),
-                InkWell(
-                    onTap: () {
-                      setState(() {
-                        selectedImage = 'assets/images/avatar3.png';
-                      });
-                      avatarProvider.ChangeAvatar('assets/images/avatar3.png');
-
-                    },
-                    child: showAvatars(context: context,
-                        imagePath: 'assets/images/avatar3.png',
+                        imagePath: 'assets/images/avatar2.png',
                         height: height,
                         selectedImage: selectedImage,
                         index: 3, avatar: 3)),
@@ -81,16 +81,32 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                 InkWell(
                     onTap: () {
                       setState(() {
-                        selectedImage = 'assets/images/avatar4.png';
+                        selectedImage = 'assets/images/avatar3.png';
                       });
-                      avatarProvider.ChangeAvatar('assets/images/avatar4.png');
+                      avatarProvider.ChangeAvatar('assets/images/avatar3.png');
 
+                    },
+                    child: showAvatars(context: context,
+                        imagePath: 'assets/images/avatar3.png',
+                        height: height,
+                        selectedImage: selectedImage,
+                        index: 4, avatar: 4)),
+                SizedBox(
+                  width: width * 0.01,
+                ),
+                InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectedImage = 'assets/images/avatar4.png';
+                        avatarProvider.ChangeAvatar('assets/images/avatar4.png');
+
+                      });
                     },
                     child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar4.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 4, avatar: 4)),
+                        index: 5, avatar: 5)),
                 SizedBox(
                   width: width * 0.01,
                 ),
@@ -106,10 +122,14 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                         imagePath: 'assets/images/avatar5.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 5, avatar: 5)),
-                SizedBox(
-                  width: width * 0.01,
-                ),
+                        index: 6, avatar: 6))
+              ],
+            ),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            Row(
+              children: [
                 InkWell(
                     onTap: () {
                       setState(() {
@@ -122,14 +142,10 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                         imagePath: 'assets/images/avatar6.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 6, avatar: 6))
-              ],
-            ),
-            SizedBox(
-              height: height * 0.01,
-            ),
-            Row(
-              children: [
+                        index: 7, avatar: 7)),
+                SizedBox(
+                  width: width * 0.01,
+                ),
                 InkWell(
                     onTap: () {
                       setState(() {
@@ -142,7 +158,7 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                         imagePath: 'assets/images/avatar7.png',
                         height: height,
                         selectedImage: selectedImage,
-                        index: 7, avatar: 7)),
+                        index: 8, avatar: 8)),
                 SizedBox(
                   width: width * 0.01,
                 ),
@@ -156,22 +172,6 @@ class _AvatarsBottomSheetState extends State<AvatarsBottomSheet> {
                     },
                     child: showAvatars(context: context,
                         imagePath: 'assets/images/avatar8.png',
-                        height: height,
-                        selectedImage: selectedImage,
-                        index: 8, avatar: 8)),
-                SizedBox(
-                  width: width * 0.01,
-                ),
-                InkWell(
-                    onTap: () {
-                      setState(() {
-                        selectedImage = 'assets/images/avatar9.png';
-                        avatarProvider.ChangeAvatar('assets/images/avatar9.png');
-
-                      });
-                    },
-                    child: showAvatars(context: context,
-                        imagePath: 'assets/images/avatar9.png',
                         height: height,
                         selectedImage: selectedImage,
                         index: 9, avatar: 9)),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:movies_app1/core/cache/sha-pref.dart';
 import 'package:movies_app1/core/utils/app_colors.dart';
 import 'package:movies_app1/core/utils/font_theme.dart';
@@ -124,7 +125,8 @@ ProfileTabViewModel viewModel=getIt<ProfileTabViewModel>();
                           width: width * 0.3,
                           height: height * 0.065,
                           child: CustomElevatedButton(
-                            onTab: () {SharedPreferenceUtils.removeData(key: 'token');
+                            onTab: () async {
+                              SharedPreferenceUtils.removeData(key: 'token');
                               Navigator.pushNamed(context, LoginScreen.initialRoute);},
                               textStyle: FontTheme.semi16white,
                               backgroundColor: AppColors.RedColor,

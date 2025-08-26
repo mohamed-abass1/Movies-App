@@ -20,7 +20,7 @@ class RegisterDataSourceImpl implements RegisterDataSource{
       await Connectivity().checkConnectivity();
       if (connectivityResult.contains(ConnectivityResult.wifi) ||
           connectivityResult.contains(ConnectivityResult.mobile)) {
-        var response=await ApiManger().register( data: {
+        var response=await apiManger.register( data: {
           "name":name,
           "email":email,
           "password":password,

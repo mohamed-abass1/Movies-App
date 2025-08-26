@@ -2,12 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app1/core/errors/Errors_File.dart';
 import 'package:movies_app1/domain/entities/RegisterResponseEntity.dart';
-
-import '../repository/repository/UpdateProfileRepository.dart';
+import '../repository/repository/GetProfileRepository.dart';
  @injectable
-class UpdateProfileUseCase{
-   UpdateProfileRepository updateProfileRepository;
-   UpdateProfileUseCase({required this.updateProfileRepository});
-Future<Either<Failures,RegisterResponseEntity>>invoke(num? avatar) async {
-return updateProfileRepository.UpdateProfile( avatar);
+class GetProfileUseCase{
+   GetProfileRepository getProfileRepository;
+   GetProfileUseCase({required this.getProfileRepository});
+Future<Either<Failures,RegisterResponseEntity>>invoke() async {
+return getProfileRepository.GetProfile();
 }}

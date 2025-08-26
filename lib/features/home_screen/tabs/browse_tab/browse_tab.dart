@@ -6,6 +6,7 @@ import 'package:movies_app1/core/utils/font_theme.dart';
 import 'package:movies_app1/di/di.dart';
 import 'package:movies_app1/features/home_screen/tabs/browse_tab/BrowseTabStates.dart';
 import 'package:movies_app1/features/home_screen/tabs/browse_tab/BrowseTabViewModel.dart';
+import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabViewModel.dart';
 import 'package:movies_app1/screen_details/moviesSlider.dart';
 
 class BrowseTab extends StatefulWidget {
@@ -65,8 +66,11 @@ class _BrowseTabState extends State<BrowseTab> {
                     crossAxisCount: 2,),
                   itemCount: viewModel.movies50List!.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return MoviesSlider(
-                      item: viewModel.movies50List![index]);
+                    return InkWell(
+                      onTap: () => HomeTabViewModel.get(context).saveHiveList(viewModel.movies50List![index]),
+                      child: MoviesSlider(
+                        item: viewModel.movies50List![index]),
+                    );
                   },
                 );
               }

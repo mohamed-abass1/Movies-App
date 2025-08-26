@@ -12,13 +12,13 @@ class UpdateProfileDataSourceImpl implements UpdateProfileDataSource{
   ApiManger apiManger;
   UpdateProfileDataSourceImpl({required this.apiManger});
   @override
-  Future<Either<Failures, RegisterResponseDm>> UpdateProfile(num? avatar) async {
+  Future<Either<Failures, RegisterResponseDm>> UpdateProfile(email,num? avatar) async {
     try {
       final List<ConnectivityResult> connectivityResult =
       await Connectivity().checkConnectivity();
       if (connectivityResult.contains(ConnectivityResult.wifi) ||
           connectivityResult.contains(ConnectivityResult.mobile)) {
-        var response=await apiManger.updateProfile(avatar);
+        var response=await apiManger.updateProfile(email,avatar);
         var logInResponse=RegisterResponseDm.fromJson(response.data);
         print('MESSAGE${logInResponse.message}');
         if (response.statusCode! >= 200 && response.statusCode! < 300) {

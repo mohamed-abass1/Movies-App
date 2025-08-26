@@ -68,7 +68,7 @@ static String initialRoute='Reset_password';
                             obscure: viewModel.NewPasswordObscureText,
                             controller:viewModel.NewPassword1Controller,
                             validator: AppValidators.validatePassword,
-                            prefixIcon:ImageIcon(AssetImage('assets/images/lock_icon.png'),color: AppColors.WhiteColor),hintText:'Old Password',
+                            prefixIcon:ImageIcon(AssetImage('assets/images/lock_icon.png'),color: AppColors.WhiteColor),hintText:'New Password',
                             suffixIcon: viewModel.NewPasswordObscureText==true? InkWell(
                               onTap:() {viewModel.unObscureNewPassword();},
                               child: ImageIcon(color: AppColors.WhiteColor,

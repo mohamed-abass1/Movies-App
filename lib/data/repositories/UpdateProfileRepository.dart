@@ -10,8 +10,8 @@ class UpdateProfileRepositoryImpl implements UpdateProfileRepository{
   UpdateProfileDataSource getProfileDataSource;
   UpdateProfileRepositoryImpl ({required this.getProfileDataSource});
 
-  Future<Either<Failures, RegisterResponseEntity>> UpdateProfile(num? avatar) async {
-    var either =await getProfileDataSource.UpdateProfile(avatar);
+  Future<Either<Failures, RegisterResponseEntity>> UpdateProfile(email,num? avatar) async {
+    var either =await getProfileDataSource.UpdateProfile(email,avatar);
     return either.fold((error) => Left(error), (response) => Right(response));
   }
 }

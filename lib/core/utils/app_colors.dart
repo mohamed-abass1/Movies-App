@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color PrimaryColor=Color(0xffF6BD00);
+  static Color PrimaryColor=const Color(0xffF6BD00);
   static Color TransperntPrimaryColor=Color(0x8ff6bd00);
   static Color PrimaryDark=Color(0xff282A28);
   static Color WhiteColor=Color(0xffFFFFFF);

@@ -8,11 +8,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../features/home_screen/tabs/search_tab/search_tab.dart';
 
-class Movieslistviewer extends StatelessWidget {
+class MoviesListViewer extends StatelessWidget {
 List<MoviesEntity>moviesList;
 String movieType;
 
-Movieslistviewer({required this.moviesList,required this.movieType});
+MoviesListViewer({super.key, required this.moviesList,required this.movieType});
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;

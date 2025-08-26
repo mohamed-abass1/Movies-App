@@ -7,6 +7,7 @@ import 'package:movies_app1/core/utils/font_theme.dart';
 import 'package:movies_app1/di/di.dart';
 import 'package:movies_app1/domain/entities/MoviesListEntity.dart';
 import 'package:movies_app1/features/home_screen/home_screen.dart';
+import 'package:movies_app1/features/home_screen/tabs/home_tab/homeTabViewModel.dart';
 import 'package:movies_app1/features/screens/MovieDetails/MovieDetailsStates.dart';
 import 'package:movies_app1/features/screens/MovieDetails/MovieDetailsViewModel.dart';
 import 'package:movies_app1/reusable_widget/customElevatedButton.dart';
@@ -217,7 +218,8 @@ class _MovieDetailsState extends State<MovieDetails> {
                     crossAxisSpacing: width*0.01,
                     crossAxisCount: 2,),
                   itemCount: viewModel.moviesSuggest.length,
-                  itemBuilder: (BuildContext context, int index) { return MoviesSlider(item: viewModel.moviesSuggest[index],);  },
+                  itemBuilder: (BuildContext context, int index) { return InkWell(onTap: () => HomeTabViewModel.get(context).saveHiveList(viewModel.moviesSuggest[index]),
+                      child: MoviesSlider(item: viewModel.moviesSuggest[index],));  },
                 ),
                 Container(
                     margin:  EdgeInsets.symmetric(horizontal: width*0.04),

@@ -7,7 +7,7 @@ import 'package:movies_app1/domain/entities/MoviesListEntity.dart';
 import 'package:movies_app1/domain/use_case/GetFavouriteMoviesUseCase.dart';
 import 'package:movies_app1/features/home_screen/tabs/profile_tab/profileTabStates.dart';
 
-import '../../../../domain/use_case/UpdateProfileUseCase.dart';
+import '../../../../domain/use_case/GetProfileUseCase.dart';
 @injectable
 
 class ProfileTabViewModel extends Cubit<ProfileTabStates>{
@@ -43,7 +43,7 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates>{
           (response) {
       name=response.data?.name;
       avatar=response.data?.avaterId;
-print(avatar);
+print(response.data?.avaterId);
         emit(
             GetProfileSuccessState(moviesListResponseEntity: response));
       },);
